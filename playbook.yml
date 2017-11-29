@@ -1,7 +1,8 @@
-- hosts: 
+- hosts:
      localhost
   vars:
      app_name: citydata
      github_user: GeoNode
+     geonode_version: 2.7.4
   roles:
   - ansible-geonode
