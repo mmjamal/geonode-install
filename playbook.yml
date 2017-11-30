@@ -6,5 +6,6 @@
      geonode_version: 2.7.4
      geoserver_url: http://build.geonode.org/geoserver/latest/geoserver-2.12.x.war
      server_name: 10.116.2.220
+     deploy_user: plusdata-prod
   roles:
   - ansible-geonode
