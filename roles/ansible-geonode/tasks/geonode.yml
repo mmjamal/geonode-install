@@ -120,6 +120,17 @@
   become: yes
   become_user : "{{ deploy_user }}"
 
+#- name: Clone geonode from GeoNode Github Repo
+#  git:
+#    clone: yes
+#    force: yes
+#    repo: https://github.com/GeoNode/geonode
+#    dest: '{{ home }}/geonode'
+#    version: 2.7.x
+#  ignore_errors: yes
+#  no_log: true
+#  become: true
+
 - name: install web application
   pip: name=file:///{{app_code_dir}}/{{app_name}}
        virtualenv={{virtualenv_dir}}/{{app_name}}
