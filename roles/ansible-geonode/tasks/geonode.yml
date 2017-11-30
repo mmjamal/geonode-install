@@ -61,6 +61,8 @@
 - name: create virtualenv for Django web application
   shell: virtualenv --system-site-packages {{virtualenv_dir}}/{{app_name}}
   when: venv_dir.stat.isdir is not defined
+  become: yes
+  become_user : {{ deploy_user }}
 
 - name: update pip in virtualenv to latest version
   pip: name=pip
@@ -131,7 +133,7 @@
   file: path=/var/www/{{app_name}}/uploaded/documents/ state=directory mode=0777 owner=www-data group=www-data
   become: yes
 
-- name: rename the vassals-default.ini file to the app name 
+- name: rename the vassals-default.ini file to the app name
   file: src=/etc/uwsgi-emperor/vassals/vassals-default.skel dest=/etc/uwsgi-emperor/vassals/{{app_name}}.ini owner=www-data group=www-data state=link
   become: yes
   when: not apache
@@ -217,7 +219,7 @@
   shell: curl --head --silent http://localhost:8080/geoserver/web/
   register: result
   until: result.stdout.find('200 OK') != -1
-  retries: 5 
+  retries: 5
   delay: 60
 
 - name: Copy create_db_store script in place
