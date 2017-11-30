@@ -46,7 +46,7 @@
   sudo: yes
   sudo_user: postgres
 
-- name: write the pg_hba.conf file 
+- name: write the pg_hba.conf file
   template: src=pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf
   sudo: yes
 
