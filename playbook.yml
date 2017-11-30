@@ -7,5 +7,7 @@
      geoserver_url: http://build.geonode.org/geoserver/latest/geoserver-2.12.x.war
      server_name: 10.116.2.220
      deploy_user: plusdata-prod
+     virtualenv_dir: /webapps/{{deploy_user}}/venvs
+     app_code_dir: /webapps/{{deploy_user}}
   roles:
   - ansible-geonode
