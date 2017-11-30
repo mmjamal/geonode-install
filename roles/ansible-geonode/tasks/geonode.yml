@@ -61,6 +61,8 @@
 - name: create virtualenv for Django web application
   shell: virtualenv --system-site-packages {{virtualenv_dir}}/{{app_name}}
   when: venv_dir.stat.isdir is not defined
+  become: yes
+  become_user : "{{ deploy_user }}"
 
 - name: update pip in virtualenv to latest version
   pip: name=pip
